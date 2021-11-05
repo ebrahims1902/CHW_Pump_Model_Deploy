@@ -26,15 +26,15 @@ def predict():
         # f_pickle = open(model_file, 'rb')
 
         # model = pickle.load(f_pickle)
-    float_features = [np.float64(x) for x in request.form.values()]
-    final = [np.array(float_features)]
+    float_features = [[np.float64(x) for x in request.form.values()]]
+    final = np.array(float_features)
     # final = [['1', '2', '3', '4', '5', '6', '7', '8', '9', '90']]
     prediction = model.predict(final)
         # prediction_text_all_pickles += f' {prediction} For {model_file}. \n'
         # f_pickle.close()
         
-    # return prediction
-    return render_template('chw_Pump_1_Speed.html', pred=prediction)
+    # return render_template('chw_Pump_1_Speed.html', pred=prediction)
+    return render_template('predict.html', pred=prediction)
 
     # return render_template('chw_Pump_1_Speed.html', pred='Your CHW_Pump_1_Speed Percentage Prediction is {}'.format(prediction_CHW))
     # return render_template('chw_Pump_1_Speed.html', pred=prediction)
